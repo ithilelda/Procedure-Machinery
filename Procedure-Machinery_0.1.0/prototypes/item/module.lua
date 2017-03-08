@@ -24,7 +24,9 @@ for i  = 4, module_maxlevel do
       stack_size = 50,
       default_request_amount = 10,
       effect = { speed = {bonus = 0.2 + i ^ module_power * 0.1}, consumption = {bonus = 0.4 + i ^ module_power * 0.1}}
-    },
+    }
+  )
+  table.insert(module_data,
     {
       type = "module",
       name = "effectivity-module-" .. i,
@@ -38,7 +40,9 @@ for i  = 4, module_maxlevel do
       default_request_amount = 10,
       effect = { consumption = {bonus = i ^ module_power / -2.5}},
       limitation = production
-    },
+    }
+  )
+  table.insert(module_data,
     {
       type = "module",
       name = "productivity-module-" .. i,
@@ -53,7 +57,7 @@ for i  = 4, module_maxlevel do
       effect = { productivity = {bonus = 0.025 + i ^ module_power * 0.025}, consumption = {bonus = 0.2 + i ^ module_power / 5}, speed = {bonus = -0.15}},
       limitation = productivitymodulelimitation(),
       limitation_message_key = "production-module-usable-only-on-intermediates"
-    },
+    }
   )
 end
 data:extend(module_data)
