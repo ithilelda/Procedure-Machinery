@@ -1,4 +1,5 @@
 require("config")
+require("common")
 
 
 -- I always have the safety measures in case users mess up the config.
@@ -20,10 +21,10 @@ for i  = 4, module_maxlevel do
       subgroup = "module",
       category = "speed",
       tier = i,
-      order = "a[speed]-d[speed-module-" .. i .. "]",
+      order = "a[speed]-" .. order_string(i) .. "[speed-module-" .. i .. "]",
       stack_size = 50,
       default_request_amount = 10,
-      effect = { speed = {bonus = 0.2 + i ^ module_power * 0.1}, consumption = {bonus = 0.4 + i ^ module_power * 0.1}}
+      effect = { speed = {bonus = 0.2 + i ^ module_power * 0.2}, consumption = {bonus = 0.4 + i ^ module_power * 0.2}}
     }
   )
   table.insert(module_data,
@@ -35,7 +36,7 @@ for i  = 4, module_maxlevel do
       subgroup = "module",
       category = "effectivity",
       tier = i,
-      order = "c[effectivity]-d[effectivity-module-" .. i .. "]",
+      order = "c[effectivity]-" .. order_string(i) .. "[effectivity-module-" .. i .. "]",
       stack_size = 50,
       default_request_amount = 10,
       effect = { consumption = {bonus = i ^ module_power / -2.5}},
@@ -51,10 +52,10 @@ for i  = 4, module_maxlevel do
       subgroup = "module",
       category = "productivity",
       tier = i,
-      order = "c[productivity]-d[productivity-module-" .. i .. "]",
+      order = "c[productivity]-" .. order_string(i) .. "[productivity-module-" .. i .. "]",
       stack_size = 50,
       default_request_amount = 10,
-      effect = { productivity = {bonus = 0.025 + i ^ module_power * 0.025}, consumption = {bonus = 0.2 + i ^ module_power / 5}, speed = {bonus = -0.15}},
+      effect = { productivity = {bonus = i ^ module_power * 0.05 - 0.05}, consumption = {bonus = 0.2 + i ^ module_power / 5}, speed = {bonus = -0.15}},
       limitation = productivitymodulelimitation(),
       limitation_message_key = "production-module-usable-only-on-intermediates"
     }

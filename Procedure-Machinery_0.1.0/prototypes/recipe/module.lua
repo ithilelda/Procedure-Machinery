@@ -8,9 +8,9 @@ elseif module_maxlevel > 25 then
   module_maxlevel = 25
 end
 
+module_data = {}
 for i  = 4, module_maxlevel do
-  data:extend(
-  {
+  table.insert(module_data,
     {
       type = "recipe",
       name = "speed-module-" .. i,
@@ -22,9 +22,11 @@ for i  = 4, module_maxlevel do
         {"processing-unit", 5 * (i - 2)},
         {"alien-artifact", 1 * (i - 2)}
       },
-      energy_required = 15 * 2 ^ (i - 1),
+      energy_required = 60 * (i - 2),
       result = "speed-module-" .. i
-    },
+    }
+  )
+  table.insert(module_data,
     {
       type = "recipe",
       name = "effectivity-module-" .. i,
@@ -36,9 +38,11 @@ for i  = 4, module_maxlevel do
         {"processing-unit", 5 * (i - 2)},
         {"alien-artifact", 1 * (i - 2)}
       },
-      energy_required = 15 * 2 ^ (i - 1),
+      energy_required = 60 * (i - 2),
       result = "effectivity-module-" .. i
-    },
+    }
+  )
+  table.insert(module_data,
     {
       type = "recipe",
       name = "productivity-module-" .. i,
@@ -50,9 +54,9 @@ for i  = 4, module_maxlevel do
         {"processing-unit", 5 * (i - 2)},
         {"alien-artifact", 1 * (i - 2)}
       },
-      energy_required = 15 * 2 ^ (i - 1),
+      energy_required = 60 * (i - 2),
       result = "productivity-module-" .. i
-    },
-  }
+    }
   )
 end
+data:extend(module_data)
