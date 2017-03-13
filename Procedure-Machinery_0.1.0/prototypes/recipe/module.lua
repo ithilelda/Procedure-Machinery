@@ -59,4 +59,34 @@ for i  = 4, module_maxlevel do
     }
   )
 end
+table.insert(module_data,
+  {
+    type = "recipe",
+    name = "industrial-module",
+    enabled = false,
+    ingredients =
+    {
+      {"productivity-module", 1},
+      {"speed-module", 1},
+    },
+    energy_required = 1,
+    result = "industrial-module"
+  }
+)
+for i  = 2, module_maxlevel do
+  table.insert(module_data,
+    {
+      type = "recipe",
+      name = "industrial-module-" .. i,
+      enabled = false,
+      ingredients =
+      {
+        {"productivity-module-" .. i, 1},
+        {"speed-module-" .. i, 1},
+      },
+      energy_required = 1,
+      result = "industrial-module-" .. i
+    }
+  )
+end
 data:extend(module_data)

@@ -24,7 +24,7 @@ for i  = 4, module_maxlevel do
       order = "a[speed]-" .. order_string(i) .. "[speed-module-" .. i .. "]",
       stack_size = 50,
       default_request_amount = 10,
-      effect = { speed = {bonus = 0.2 + i ^ module_power * 0.2}, consumption = {bonus = 0.4 + i ^ module_power * 0.2}}
+      effect = { speed = {bonus = i ^ module_power * 0.25 - 0.25}, consumption = {bonus = i ^ module_power * 0.25 - 0.1}}
     }
   )
   table.insert(module_data,
@@ -55,35 +55,52 @@ for i  = 4, module_maxlevel do
       order = "c[productivity]-" .. order_string(i) .. "[productivity-module-" .. i .. "]",
       stack_size = 50,
       default_request_amount = 10,
-      effect = { productivity = {bonus = i ^ module_power * 0.05 - 0.05}, consumption = {bonus = 0.2 + i ^ module_power / 5}, speed = {bonus = -0.15}},
+      effect = { productivity = {bonus = i ^ module_power * 0.05}, consumption = {bonus = 0.1 + i ^ module_power / 5}, speed = {bonus = -0.15}},
       limitation = productivitymodulelimitation(),
       limitation_message_key = "production-module-usable-only-on-intermediates"
     }
   )
 end
-data:extend(module_data)
 
--- The design is that productivity modules are usable only in parts, but provides better productivity bonus and no extra pollution, only pollution from extra energy use.
--- Another module called industrial module can increase productivity in anything, but causes heavy pollution as well as extreme power usage (no speed penalty though).
---[[for i  = 1, module_maxlevel do
-  data:extend(
+-- The design is that productivity module's speed decrease will come in handy when inserters are big bottle neck for 0.5 sec crafting recipes. Industrial modules, on the other hand, does not have that penalty.
+-- so it is great for multistaging your odd ratio factories to make each stage even. However, this handiness does not come without price. Since it is crafted by combining speed with productivity, the comsumption is summed.
+table.insert(module_data,
   {
+    type = "module",
+    name = "industrial-module",
+    icon = "__Procedure-Machinery__/graphics/icons/module/industrial-module.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "module",
+    category = "productivity",
+    tier = 1,
+    order = "a[industrial]-a[industrial-module]",
+    stack_size = 50,
+    default_request_amount = 10,
+    effect = { productivity = {bonus = 0.05}, consumption = {bonus = 0.9}},
+    limitation = productivitymodulelimitation(),
+    limitation_message_key = "production-module-usable-only-on-intermediates"
+  }
+)
+for i  = 2, module_maxlevel do
+  table.insert(module_data,
     {
       type = "module",
       name = "industrial-module-" .. i,
       icon = "__Procedure-Machinery__/graphics/icons/module/industrial-module-" .. i ..".png",
       flags = {"goes-to-main-inventory"},
       subgroup = "module",
-      category = "industrial",
+      category = "productivity",
       tier = i,
-      order = "a[industrial]-a[industrial-module-" .. i .. "]",
+      order = "a[industrial]-" .. order_string(i) .. "[industrial-module-" .. i .. "]",
       stack_size = 50,
       default_request_amount = 10,
-      effect = { productivity = {bonus = i ^ module_power * 0.015}, consumption = {bonus = i ^ module_power / 2}, pollution = {bonus = 0.2 * i ^ module_power}},
+      effect = { productivity = {bonus = i ^ module_power * 0.05}, consumption = {bonus = i ^ module_power * 0.45 + 0.1}},
+      limitation = productivitymodulelimitation(),
+      limitation_message_key = "production-module-usable-only-on-intermediates"
     }
-  }
   )
-end]]--
+end
+data:extend(module_data)
 
 -- modifying the base productivity modules to remove the pollution penalty, also buffed the effectivity modules.
 data:extend(
@@ -99,7 +116,7 @@ data:extend(
     order = "c[productivity]-a[productivity-module-1]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = { productivity = {bonus = 0.04}, consumption = {bonus = 0.4}, speed = {bonus = -0.15}},
+    effect = { productivity = {bonus = 0.05}, consumption = {bonus = 0.4}, speed = {bonus = -0.15}},
     limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermediates"
   },
@@ -114,7 +131,7 @@ data:extend(
     order = "c[productivity]-b[productivity-module-2]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = { productivity = {bonus = 0.06}, consumption = {bonus = 0.6}, speed = {bonus = -0.15}},
+    effect = { productivity = {bonus = 0.1}, consumption = {bonus = 0.6}, speed = {bonus = -0.15}},
     limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermediates"
   },
@@ -129,7 +146,7 @@ data:extend(
     order = "c[productivity]-c[productivity-module-3]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = { productivity = {bonus = 0.1}, consumption = {bonus = 0.8}, speed = {bonus = -0.15}},
+    effect = { productivity = {bonus = 0.15}, consumption = {bonus = 0.8}, speed = {bonus = -0.15}},
     limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermediates"
   },

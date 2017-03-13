@@ -99,4 +99,64 @@ for i  = 4, module_maxlevel do
     }
   )
 end
+table.insert(module_data,
+  {
+    type = "technology",
+    name = "industrial-module",
+    icon = "__base__/graphics/technology/productivity-module.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "industrial-module"
+      }
+    },
+    prerequisites = {"productivity-module", "speed-module"},
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+        {"alien-science-pack", 1}
+      },
+      time = 30
+    },
+    upgrade = true,
+    order = "i-h-a"
+  }
+)
+for i  = 2, module_maxlevel do
+  table.insert(module_data,
+    {
+      type = "technology",
+      name = "industrial-module-" .. i,
+      icon = "__base__/graphics/technology/productivity-module.png",
+      effects =
+      {
+        {
+          type = "unlock-recipe",
+          recipe = "industrial-module-" .. i
+        }
+      },
+      prerequisites = {"productivity-module-" .. i, "speed-module-" .. i},
+      unit =
+      {
+        count = 50,
+        ingredients =
+        {
+          {"science-pack-1", 1},
+          {"science-pack-2", 1},
+          {"science-pack-3", 1},
+          {"alien-science-pack", 1}
+        },
+        time = 30
+      },
+      upgrade = true,
+      order = "i-h-" .. order_string(i)
+    }
+  )
+end
 data:extend(module_data)
