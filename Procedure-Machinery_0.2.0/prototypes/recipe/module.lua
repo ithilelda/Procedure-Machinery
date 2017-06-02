@@ -17,10 +17,9 @@ for i  = 4, module_maxlevel do
       enabled = false,
       ingredients =
       {
-        {"speed-module-" .. (i - 1), 4},
+        {"speed-module-" .. (i - 1), 5},
         {"advanced-circuit", 5 * (i - 2)},
-        {"processing-unit", 5 * (i - 2)},
-        {"alien-artifact", 1 * (i - 2)}
+        {"processing-unit", 5 * (i - 2)}
       },
       energy_required = 60 * (i - 2),
       result = "speed-module-" .. i
@@ -33,10 +32,9 @@ for i  = 4, module_maxlevel do
       enabled = false,
       ingredients =
       {
-        {"effectivity-module-" .. (i - 1), 4},
+        {"effectivity-module-" .. (i - 1), 5},
         {"advanced-circuit", 5 * (i - 2)},
-        {"processing-unit", 5 * (i - 2)},
-        {"alien-artifact", 1 * (i - 2)}
+        {"processing-unit", 5 * (i - 2)}
       },
       energy_required = 60 * (i - 2),
       result = "effectivity-module-" .. i
@@ -49,10 +47,9 @@ for i  = 4, module_maxlevel do
       enabled = false,
       ingredients =
       {
-        {"productivity-module-" .. (i - 1), 4},
+        {"productivity-module-" .. (i - 1), 5},
         {"advanced-circuit", 5 * (i - 2)},
-        {"processing-unit", 5 * (i - 2)},
-        {"alien-artifact", 1 * (i - 2)}
+        {"processing-unit", 5 * (i - 2)}
       },
       energy_required = 60 * (i - 2),
       result = "productivity-module-" .. i

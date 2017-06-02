@@ -77,7 +77,6 @@ table.insert(module_data,
     stack_size = 50,
     default_request_amount = 10,
     effect = { productivity = {bonus = 0.05}, consumption = {bonus = 0.9}},
-    limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermediates"
   }
 )
@@ -95,7 +94,6 @@ for i  = 2, module_maxlevel do
       stack_size = 50,
       default_request_amount = 10,
       effect = { productivity = {bonus = i ^ module_power * 0.05}, consumption = {bonus = i ^ module_power * 0.45 + 0.1}},
-      limitation = productivitymodulelimitation(),
       limitation_message_key = "production-module-usable-only-on-intermediates"
     }
   )

@@ -17,7 +17,7 @@ data:extend({
       ingredients = {{"science-pack-1", 1},
                      {"science-pack-2", 1},
                      {"science-pack-3", 1},
-                     {"alien-science-pack", 1}},
+                     {"production-science-pack", 1}},
       time = 30
     },
     order = "d-c"

@@ -32,7 +32,7 @@ for i  = 4, module_maxlevel do
           {"science-pack-1", 1},
           {"science-pack-2", 1},
           {"science-pack-3", 1},
-          {"alien-science-pack", 1}
+          {"production-science-pack", 1}
         },
         time = 30 * math.ceil(i / 2)
       },
@@ -61,7 +61,7 @@ for i  = 4, module_maxlevel do
           {"science-pack-1", 1},
           {"science-pack-2", 1},
           {"science-pack-3", 1},
-          {"alien-science-pack", 1}
+          {"production-science-pack", 1}
         },
         time = 30 * math.ceil(i / 2)
       },
@@ -90,7 +90,7 @@ for i  = 4, module_maxlevel do
           {"science-pack-1", 1},
           {"science-pack-2", 1},
           {"science-pack-3", 1},
-          {"alien-science-pack", 1}
+          {"production-science-pack", 1}
         },
         time = 30 * math.ceil(i / 2)
       },
@@ -120,7 +120,7 @@ table.insert(module_data,
         {"science-pack-1", 1},
         {"science-pack-2", 1},
         {"science-pack-3", 1},
-        {"alien-science-pack", 1}
+        {"production-science-pack", 1}
       },
       time = 30
     },
@@ -150,7 +150,7 @@ for i  = 2, module_maxlevel do
           {"science-pack-1", 1},
           {"science-pack-2", 1},
           {"science-pack-3", 1},
-          {"alien-science-pack", 1}
+          {"production-science-pack", 1}
         },
         time = 30
       },
