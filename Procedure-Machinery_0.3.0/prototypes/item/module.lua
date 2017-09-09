@@ -39,7 +39,7 @@ for i  = 4, module_maxlevel do
       order = "c[effectivity]-" .. order_string(i) .. "[effectivity-module-" .. i .. "]",
       stack_size = 50,
       default_request_amount = 10,
-      effect = { consumption = {bonus = i ^ module_power / -2.5}},
+      effect = { consumption = {bonus = i ^ module_power / -10.0 - 0.1}},
       limitation = production
     }
   )
@@ -100,7 +100,7 @@ for i  = 2, module_maxlevel do
 end
 data:extend(module_data)
 
--- modifying the base productivity modules to remove the pollution penalty, also buffed the effectivity modules.
+-- modifying the base productivity modules to remove the pollution penalty, also nerfed the effectivity modules.
 data:extend(
 {
   {
@@ -159,7 +159,7 @@ data:extend(
     order = "c[effectivity]-a[effectivity-module-1]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = { consumption = {bonus = -0.4}},
+    effect = { consumption = {bonus = -0.2}},
     limitation = production
   },
   {
@@ -173,7 +173,7 @@ data:extend(
     order = "c[effectivity]-b[effectivity-module-2]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = { consumption = {bonus = -0.8}}
+    effect = { consumption = {bonus = -0.3}}
   },
   {
     type = "module",
@@ -186,7 +186,7 @@ data:extend(
     order = "c[effectivity]-c[effectivity-module-3]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = { consumption = {bonus = -1.2}}
+    effect = { consumption = {bonus = -0.4}}
   }
 }
 )
