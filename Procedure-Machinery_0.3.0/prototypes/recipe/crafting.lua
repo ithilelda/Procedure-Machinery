@@ -2,7 +2,7 @@ data:extend({
   {
     -- electrolysis to make sulfuric acid with copper and coal electrodes. This requires a lot more energy but has a slight better yield.
     type = "recipe",
-    name = "sulfuric-acid-electrolysis",
+    name = "sulfuric-acid-catalyst",
     category = "chemistry",
     energy_required = 20,
     enabled = false,
